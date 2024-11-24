@@ -43,7 +43,6 @@ classDiagram
     SistemaReservaciones *-- "1..*" Usuario
     SistemaReservaciones *-- "1..*" RecursoReservable
     SistemaReservaciones *-- "1..*" Reservacion
-    Reservacion --|> "1" Usuario
     Reservacion --|> "1" RecursoReservable
     
 
