@@ -8,28 +8,28 @@
 
 classDiagram
     class SistemaReservaciones {
-        + List~RecursoReservable~ recursos
-        + List~Usuario~ usuarios
-        + List~Reservacion~ reservaciones
-        + agregarRecurso(recurso: RecursoReservable): void
-        + registrarUsuario(usuario: Usuario): void
-        + generarReservacion(reservacion: Reservacion): void
+        + List recursos
+        + List usuarios
+        + List reservaciones
+        + agregarRecurso()
+        + registrarUsuario()
+        + generarReservacion()
     }
 
     class Usuario {
         + String nombre
         + String identificación
-        + List~Reservacion~ reservaciones
-        + consultarReservaciones(): void
-        + cancelarReservacion(reservacion: Reservacion): void
+        + List reservaciones
+        + consultarReservaciones()
+        + cancelarReservacion()
     }
 
     class RecursoReservable {
         + String nombre
         + String tipo
         + String disponibilidad
-        + consultarDisponibilidad(fechaInicio: Date, fechaFin: Date): Boolean
-        + actualizarDisponibilidad(estado: String): void
+        + consultarDisponibilidad(fechaInicio: Date, fechaFin: Date)
+        + actualizarDisponibilidad()
     }
 
     class Reservacion {
@@ -37,13 +37,14 @@ classDiagram
         + RecursoReservable recurso
         + Date fechaInicio
         + Date fechaFin
-        + cancelarReservacion(): void
+        + cancelarReservacion()
     }
 
-    SistemaReservaciones --> "1..*" Usuario
-    SistemaReservaciones --> "1..*" RecursoReservable
-    SistemaReservaciones --> "1..*" Reservacion
-    Reservacion --> "1" Usuario
-    Reservacion --> "1" RecursoReservable
+    SistemaReservaciones *-- "1..*" Usuario
+    SistemaReservaciones *-- "1..*" RecursoReservable
+    SistemaReservaciones *-- "1..*" Reservacion
+    Reservacion --|> "1" Usuario
+    Reservacion --|> "1" RecursoReservable
+    
 
 ```
